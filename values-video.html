@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Play OOSH — Our Core Values</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+  }
+
+  #stage-wrapper {
+    width: 100%;
+    max-width: 1280px;
+    position: relative;
+  }
+
+  #stage {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+
+  /* ===== SLIDES ===== */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ===== SLIDE 0: INTRO ===== */
+  #slide-0 {
+    background: #0d1a3a;
+  }
+  .intro-stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .star-dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .intro-logo {
+    font-size: clamp(32px, 6vw, 76px);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: none;
+  }
+  .intro-logo span { color: #25c0d5; }
+  .intro-subtitle {
+    font-size: clamp(14px, 2.5vw, 32px);
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+    margin-top: 12px;
+    opacity: 0;
+    transition: none;
+  }
+  .intro-dots {
+    display: flex;
+    gap: clamp(8px,1.5vw,20px);
+    margin-top: clamp(16px,3vw,36px);
+  }
+  .intro-dot {
+    width: clamp(14px,2vw,24px);
+    height: clamp(14px,2vw,24px);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: none;
+  }
+  .intro-tagline {
+    font-size: clamp(12px,2vw,26px);
+    font-weight: 800;
+    color: #fff;
+    margin-top: clamp(10px,2vw,24px);
+    opacity: 0;
+    transition: none;
+  }
+
+  /* ===== VALUE SLIDES 1–6 ===== */
+  .value-slide {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .vs-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .vs-wave-top, .vs-wave-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    width: 100%;
+  }
+  .vs-wave-top { top: 0; }
+  .vs-wave-bottom { bottom: 0; }
+
+  .vs-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 4vw, 60px);
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
+  .vs-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(8px,1.5vw,18px);
+    flex: 1;
+  }
+  .vs-number-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(36px,5vw,64px);
+    height: clamp(36px,5vw,64px);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    border: 3px solid rgba(255,255,255,0.6);
+    font-size: clamp(16px,2.5vw,32px);
+    font-weight: 900;
+    color: #fff;
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: none;
+  }
+  .vs-name {
+    font-size: clamp(32px,6vw,80px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateX(80px);
+    transition: none;
+    letter-spacing: -1px;
+  }
+  .vs-title {
+    font-size: clamp(14px,2.2vw,28px);
+    font-weight: 800;
+    color: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: clamp(6px,1vw,12px) clamp(14px,2vw,28px);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: none;
+  }
+  .vs-statement {
+    font-size: clamp(11px,1.6vw,20px);
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    max-width: 460px;
+    line-height: 1.5;
+    opacity: 0;
+    transition: none;
+  }
+  .vs-mascot-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: clamp(140px,22vw,280px);
+    width: clamp(120px,18vw,240px);
+    opacity: 0;
+    transform: translateY(300px);
+    transition: none;
+    position: relative;
+  }
+  .vs-mascot-wrap svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.25));
+  }
+
+  /* sparkles */
+  .sparkle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    animation: none;
+  }
+
+  /* ===== SLIDE 7: FINALE ===== */
+  #slide-7 {
+    background: linear-gradient(135deg, #0d1a3a 0%, #1a0d3a 50%, #0d1a3a 100%);
+  }
+  .finale-bg-stripes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .finale-stripe {
+    position: absolute;
+    height: 100%;
+    opacity: 0.15;
+  }
+  .finale-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px,2vw,24px);
+  }
+  .finale-title {
+    font-size: clamp(28px,5vw,64px);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: none;
+  }
+  .finale-row {
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(8px,1.5vw,20px);
+    opacity: 0;
+    transition: none;
+  }
+  .finale-mascot {
+    width: clamp(60px,8vw,100px);
+    height: clamp(70px,9vw,115px);
+    filter: drop-shadow(0 6px 15px rgba(0,0,0,0.3));
+  }
+  .finale-tagline {
+    font-size: clamp(11px,1.7vw,22px);
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    max-width: 700px;
+    opacity: 0;
+    transition: none;
+  }
+  .finale-brand {
+    font-size: clamp(18px,3vw,42px);
+    font-weight: 900;
+    text-align: center;
+    opacity: 0;
+    transition: none;
+  }
+  .finale-brand span { color: #25c0d5; }
+
+  /* confetti */
+  .confetti-piece {
+    position: absolute;
+    top: -20px;
+    border-radius: 3px;
+    animation: confettiFall linear infinite;
+    opacity: 0.9;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== KEYFRAMES ===== */
+  @keyframes bounceIn {
+    0%   { transform: translateY(300px); opacity: 0; }
+    60%  { transform: translateY(-20px); opacity: 1; }
+    80%  { transform: translateY(10px); }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes fadeSlideLeft {
+    0%   { transform: translateX(-80px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes fadeSlideRight {
+    0%   { transform: translateX(80px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes fadeInUp {
+    0%   { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes floatBob {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+  @keyframes sparkleAnim {
+    0%   { transform: scale(0) rotate(0deg); opacity: 0; }
+    50%  { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    100% { transform: scale(0) rotate(360deg); opacity: 0; }
+  }
+  @keyframes popIn {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes logoBounce {
+    0%   { transform: scale(0.5); opacity: 0; }
+    60%  { transform: scale(1.05); opacity: 1; }
+    80%  { transform: scale(0.97); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes dotPop {
+    0%   { transform: scale(0); opacity: 0; }
+    70%  { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes finalePop {
+    0%   { transform: scale(0.7); opacity: 0; }
+    60%  { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* ===== CONTROLS ===== */
+  #controls {
+    width: 100%;
+    max-width: 1280px;
+    background: #1a1a2e;
+    border-radius: 0 0 16px 16px;
+    padding: clamp(8px,1.5vw,16px) clamp(12px,2vw,24px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #progress-bar-wrap {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  #progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #25c0d5, #92278f);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  .controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .ctrl-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: clamp(14px,2vw,20px);
+    padding: clamp(4px,0.8vw,10px) clamp(10px,1.5vw,18px);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    transition: background 0.2s;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.2); }
+  .ctrl-btn.active { background: #25c0d5; }
+
+  #slide-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .sdot {
+    width: clamp(6px,1vw,10px);
+    height: clamp(6px,1vw,10px);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .sdot.active {
+    background: #25c0d5;
+    transform: scale(1.4);
+  }
+
+  #speed-btns { display: flex; gap: 6px; }
+  #slide-counter {
+    color: rgba(255,255,255,0.5);
+    font-size: clamp(10px,1.2vw,14px);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage-wrapper">
+  <div id="stage">
+
+    <!-- ===== SLIDE 0: INTRO ===== -->
+    <div class="slide active" id="slide-0">
+      <div class="intro-stars" id="intro-stars"></div>
+      <div class="intro-logo" id="intro-logo">Fair Play <span>OOSH</span></div>
+      <div class="intro-subtitle" id="intro-subtitle">Our Core Values</div>
+      <div class="intro-dots" id="intro-dots">
+        <div class="intro-dot" style="background:#25c0d5;"></div>
+        <div class="intro-dot" style="background:#92278f;"></div>
+        <div class="intro-dot" style="background:#f26522;"></div>
+        <div class="intro-dot" style="background:#a2cd3a;"></div>
+        <div class="intro-dot" style="background:#ec008c;"></div>
+      </div>
+      <div class="intro-tagline" id="intro-tagline">Meet our mascots! ✨</div>
+    </div>
+
+    <!-- ===== SLIDE 1: SHELLY ===== -->
+    <div class="slide" id="slide-1">
+      <div class="value-slide">
+        <div class="vs-bg" style="background: linear-gradient(135deg, #25c0d5 0%, #1a9db5 60%, #0e7a8e 100%);"></div>
+        <svg class="vs-wave-top" viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,60 C200,120 400,0 640,60 C880,120 1080,0 1280,60 L1280,0 L0,0 Z" fill="#0e7a8e" opacity="0.6"/>
+        </svg>
+        <svg class="vs-wave-bottom" viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,60 C200,0 400,120 640,60 C880,0 1080,120 1280,60 L1280,120 L0,120 Z" fill="#0e7a8e" opacity="0.6"/>
+        </svg>
+
+        <!-- sparkles -->
+        <div class="sparkle" style="top:15%;left:10%;font-size:clamp(16px,2.5vw,32px);">✦</div>
+        <div class="sparkle" style="top:20%;right:15%;font-size:clamp(12px,2vw,26px);">✦</div>
+        <div class="sparkle" style="bottom:25%;left:20%;font-size:clamp(10px,1.5vw,20px);">✦</div>
+        <div class="sparkle" style="top:60%;right:8%;font-size:clamp(14px,2vw,28px);">✦</div>
+
+        <div class="vs-content">
+          <div class="vs-left">
+            <div class="vs-number-badge" id="s1-badge">1</div>
+            <div class="vs-name" id="s1-name">SHELLY</div>
+            <div class="vs-title" id="s1-title">Safety &amp; Wellbeing</div>
+            <div class="vs-statement" id="s1-stmt">"The safety and wellbeing of every child is our highest priority."</div>
+          </div>
+          <div class="vs-mascot-wrap" id="s1-mascot">
+            <!-- SHELLY SVG: round cyan blob, cape, shield on tummy, protective arms, big eyes, smile -->
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cape -->
+              <ellipse cx="100" cy="185" rx="72" ry="55" fill="#1a9db5" opacity="0.85"/>
+              <path d="M50,145 Q100,230 150,145" fill="#0e7a8e"/>
+              <!-- Body -->
+              <ellipse cx="100" cy="145" rx="62" ry="65" fill="#3dd6eb"/>
+              <!-- Arms spread wide -->
+              <ellipse cx="28" cy="148" rx="20" ry="11" fill="#3dd6eb" transform="rotate(-20,28,148)"/>
+              <ellipse cx="172" cy="148" rx="20" ry="11" fill="#3dd6eb" transform="rotate(20,172,148)"/>
+              <!-- Hands -->
+              <circle cx="14" cy="145" r="10" fill="#25c0d5"/>
+              <circle cx="186" cy="145" r="10" fill="#25c0d5"/>
+              <!-- Shield on tummy -->
+              <path d="M85,148 Q100,138 115,148 L115,172 Q100,182 85,172 Z" fill="#fff" opacity="0.95"/>
+              <path d="M88,151 Q100,143 112,151 L112,170 Q100,178 88,170 Z" fill="#f26522"/>
+              <text x="100" y="166" text-anchor="middle" font-size="14" font-weight="900" fill="#fff">✔</text>
+              <!-- Head -->
+              <circle cx="100" cy="88" r="52" fill="#3dd6eb"/>
+              <!-- Eyes -->
+              <circle cx="82" cy="82" r="12" fill="#fff"/>
+              <circle cx="118" cy="82" r="12" fill="#fff"/>
+              <circle cx="85" cy="84" r="7" fill="#0e7a8e"/>
+              <circle cx="121" cy="84" r="7" fill="#0e7a8e"/>
+              <circle cx="87" cy="82" r="3" fill="#fff"/>
+              <circle cx="123" cy="82" r="3" fill="#fff"/>
+              <!-- Cheeks -->
+              <ellipse cx="74" cy="97" rx="9" ry="6" fill="#25c0d5" opacity="0.5"/>
+              <ellipse cx="126" cy="97" rx="9" ry="6" fill="#25c0d5" opacity="0.5"/>
+              <!-- Smile -->
+              <path d="M84,104 Q100,118 116,104" stroke="#0e7a8e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <!-- Hair highlight -->
+              <ellipse cx="100" cy="42" rx="28" ry="10" fill="#6de8f5" opacity="0.4"/>
+              <!-- Ears -->
+              <circle cx="50" cy="88" r="10" fill="#3dd6eb"/>
+              <circle cx="150" cy="88" r="10" fill="#3dd6eb"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SLIDE 2: STELLA ===== -->
+    <div class="slide" id="slide-2">
+      <div class="value-slide">
+        <div class="vs-bg" style="background: linear-gradient(135deg, #92278f 0%, #7a1a7a 60%, #5c0f5c 100%);"></div>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,60 C320,120 640,0 960,80 C1120,120 1200,20 1280,60 L1280,0 L0,0 Z" fill="#5c0f5c" opacity="0.6"/>
+        </svg>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,60 C320,0 640,120 960,40 C1120,0 1200,100 1280,60 L1280,120 L0,120 Z" fill="#5c0f5c" opacity="0.6"/>
+        </svg>
+
+        <div class="sparkle" style="top:12%;left:8%;font-size:clamp(16px,2.5vw,32px);color:#f8d7ff;">★</div>
+        <div class="sparkle" style="top:18%;right:12%;font-size:clamp(12px,2vw,26px);color:#f8d7ff;">★</div>
+        <div class="sparkle" style="bottom:22%;left:18%;font-size:clamp(10px,1.5vw,22px);color:#f8d7ff;">★</div>
+        <div class="sparkle" style="top:55%;right:6%;font-size:clamp(14px,2vw,28px);color:#f8d7ff;">★</div>
+
+        <div class="vs-content">
+          <div class="vs-left">
+            <div class="vs-number-badge" id="s2-badge">2</div>
+            <div class="vs-name" id="s2-name">STELLA</div>
+            <div class="vs-title" id="s2-title">Inclusion &amp; Equity</div>
+            <div class="vs-statement" id="s2-stmt">"Inclusion, equity, and respect for all individuals, no exceptions."</div>
+          </div>
+          <div class="vs-mascot-wrap" id="s2-mascot">
+            <!-- STELLA SVG: purple starburst, rainbow arc, open arms -->
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- Star burst points around body -->
+              <polygon points="100,60 108,85 132,85 113,100 120,125 100,110 80,125 87,100 68,85 92,85" fill="#c44dbf" opacity="0.7" transform="translate(0,60)"/>
+              <!-- Body blob -->
+              <ellipse cx="100" cy="155" rx="58" ry="62" fill="#b53db0"/>
+              <!-- Rainbow arc -->
+              <path d="M60,130 Q100,95 140,130" fill="none" stroke="#ff6b6b" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+              <path d="M65,138 Q100,100 135,138" fill="none" stroke="#f9ca24" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+              <path d="M70,146 Q100,108 130,146" fill="none" stroke="#6bcb77" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+              <path d="M75,154 Q100,116 125,154" fill="none" stroke="#4dabf7" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+              <!-- Arms out wide -->
+              <ellipse cx="30" cy="150" rx="24" ry="10" fill="#b53db0" transform="rotate(-15,30,150)"/>
+              <ellipse cx="170" cy="150" rx="24" ry="10" fill="#b53db0" transform="rotate(15,170,150)"/>
+              <circle cx="14" cy="147" r="11" fill="#92278f"/>
+              <circle cx="186" cy="147" r="11" fill="#92278f"/>
+              <!-- Star on chest -->
+              <polygon points="100,148 104,158 115,158 106,165 110,175 100,168 90,175 94,165 85,158 96,158" fill="#f9ca24"/>
+              <!-- Head -->
+              <circle cx="100" cy="90" r="50" fill="#b53db0"/>
+              <!-- Star points on head -->
+              <polygon points="100,42 104,54 116,54 107,62 110,74 100,66 90,74 93,62 84,54 96,54" fill="#c44dbf" opacity="0.8"/>
+              <!-- Eyes -->
+              <circle cx="84" cy="84" r="11" fill="#fff"/>
+              <circle cx="116" cy="84" r="11" fill="#fff"/>
+              <circle cx="87" cy="86" r="6" fill="#4a0047"/>
+              <circle cx="119" cy="86" r="6" fill="#4a0047"/>
+              <circle cx="89" cy="84" r="2.5" fill="#fff"/>
+              <circle cx="121" cy="84" r="2.5" fill="#fff"/>
+              <!-- Smile -->
+              <path d="M86,102 Q100,115 114,102" stroke="#7a1a7a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Cheeks -->
+              <ellipse cx="76" cy="96" rx="8" ry="5" fill="#d966d6" opacity="0.5"/>
+              <ellipse cx="124" cy="96" rx="8" ry="5" fill="#d966d6" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SLIDE 3: HUGO ===== -->
+    <div class="slide" id="slide-3">
+      <div class="value-slide">
+        <div class="vs-bg" style="background: linear-gradient(135deg, #f26522 0%, #d4541a 60%, #a83e10 100%);"></div>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,30 C200,100 500,0 800,70 C1000,110 1150,10 1280,50 L1280,0 L0,0 Z" fill="#a83e10" opacity="0.6"/>
+        </svg>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,90 C200,20 500,120 800,50 C1000,10 1150,110 1280,70 L1280,120 L0,120 Z" fill="#a83e10" opacity="0.6"/>
+        </svg>
+
+        <div class="sparkle" style="top:14%;left:9%;font-size:clamp(16px,2.5vw,30px);color:#ffe8d6;">♥</div>
+        <div class="sparkle" style="top:22%;right:14%;font-size:clamp(12px,2vw,24px);color:#ffe8d6;">♥</div>
+        <div class="sparkle" style="bottom:20%;left:16%;font-size:clamp(10px,1.5vw,20px);color:#ffe8d6;">♥</div>
+        <div class="sparkle" style="top:58%;right:9%;font-size:clamp(14px,2vw,28px);color:#ffe8d6;">♥</div>
+
+        <div class="vs-content">
+          <div class="vs-left">
+            <div class="vs-number-badge" id="s3-badge">3</div>
+            <div class="vs-name" id="s3-name">HUGO</div>
+            <div class="vs-title" id="s3-title">Partnerships</div>
+            <div class="vs-statement" id="s3-stmt">"Authentic collaborative partnerships with families and communities."</div>
+          </div>
+          <div class="vs-mascot-wrap" id="s3-mascot">
+            <!-- HUGO SVG: round orange, white heart on chest, arms reaching out -->
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body -->
+              <ellipse cx="100" cy="152" rx="64" ry="66" fill="#f58040"/>
+              <!-- Arms reaching forward/out -->
+              <path d="M38,145 Q20,135 10,128" stroke="#f58040" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <path d="M162,145 Q180,135 190,128" stroke="#f58040" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <!-- Hands -->
+              <circle cx="8" cy="126" r="12" fill="#f26522"/>
+              <circle cx="192" cy="126" r="12" fill="#f26522"/>
+              <!-- White heart on chest -->
+              <path d="M100,148 C100,148 82,136 82,124 C82,116 90,110 100,120 C110,110 118,116 118,124 C118,136 100,148 100,148 Z" fill="#fff"/>
+              <!-- Head -->
+              <circle cx="100" cy="88" r="52" fill="#f58040"/>
+              <!-- Ears -->
+              <circle cx="50" cy="86" r="12" fill="#f58040"/>
+              <circle cx="150" cy="86" r="12" fill="#f58040"/>
+              <circle cx="50" cy="86" r="7" fill="#f26522"/>
+              <circle cx="150" cy="86" r="7" fill="#f26522"/>
+              <!-- Eyes -->
+              <circle cx="83" cy="82" r="12" fill="#fff"/>
+              <circle cx="117" cy="82" r="12" fill="#fff"/>
+              <circle cx="86" cy="84" r="7" fill="#7a2d00"/>
+              <circle cx="120" cy="84" r="7" fill="#7a2d00"/>
+              <circle cx="88" cy="82" r="3" fill="#fff"/>
+              <circle cx="122" cy="82" r="3" fill="#fff"/>
+              <!-- Nose -->
+              <ellipse cx="100" cy="96" rx="6" ry="4" fill="#d4541a"/>
+              <!-- Smile -->
+              <path d="M83,106 Q100,120 117,106" stroke="#a83e10" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <!-- Cheeks -->
+              <ellipse cx="72" cy="98" rx="9" ry="6" fill="#f9a875" opacity="0.6"/>
+              <ellipse cx="128" cy="98" rx="9" ry="6" fill="#f9a875" opacity="0.6"/>
+              <!-- Freckles -->
+              <circle cx="93" cy="99" r="2" fill="#d4541a" opacity="0.5"/>
+              <circle cx="107" cy="99" r="2" fill="#d4541a" opacity="0.5"/>
+              <!-- Hair tuft -->
+              <path d="M88,38 Q100,28 112,38" stroke="#d4541a" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <path d="M94,34 Q100,22 106,34" stroke="#d4541a" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SLIDE 4: GRACE ===== -->
+    <div class="slide" id="slide-4">
+      <div class="value-slide">
+        <div class="vs-bg" style="background: linear-gradient(135deg, #a2cd3a 0%, #82a82e 60%, #5e7a1e 100%);"></div>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,80 C300,20 600,100 900,40 C1100,0 1200,80 1280,60 L1280,0 L0,0 Z" fill="#5e7a1e" opacity="0.6"/>
+        </svg>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,40 C300,100 600,20 900,80 C1100,120 1200,40 1280,60 L1280,120 L0,120 Z" fill="#5e7a1e" opacity="0.6"/>
+        </svg>
+
+        <div class="sparkle" style="top:15%;left:11%;font-size:clamp(16px,2.5vw,30px);color:#f0ffe0;">★</div>
+        <div class="sparkle" style="top:20%;right:10%;font-size:clamp(12px,2vw,24px);color:#f0ffe0;">★</div>
+        <div class="sparkle" style="bottom:24%;left:14%;font-size:clamp(10px,1.5vw,20px);color:#f0ffe0;">★</div>
+        <div class="sparkle" style="top:52%;right:7%;font-size:clamp(14px,2vw,26px);color:#f0ffe0;">★</div>
+
+        <div class="vs-content">
+          <div class="vs-left">
+            <div class="vs-number-badge" id="s4-badge">4</div>
+            <div class="vs-name" id="s4-name">GRACE</div>
+            <div class="vs-title" id="s4-title">Integrity &amp; Professionalism</div>
+            <div class="vs-statement" id="s4-stmt">"Professionalism, integrity, and ethical practice in all we do."</div>
+          </div>
+          <div class="vs-mascot-wrap" id="s4-mascot">
+            <!-- GRACE SVG: green upright, gold star badge, clipboard -->
+            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body - more upright/tall -->
+              <rect x="62" y="128" width="76" height="90" rx="28" fill="#b8e04a"/>
+              <!-- Legs -->
+              <rect x="72" y="198" width="22" height="30" rx="10" fill="#82a82e"/>
+              <rect x="106" y="198" width="22" height="30" rx="10" fill="#82a82e"/>
+              <!-- Left arm holding clipboard -->
+              <path d="M62,145 Q40,150 32,165" stroke="#b8e04a" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <!-- Clipboard -->
+              <rect x="10" y="158" width="34" height="42" rx="5" fill="#fff" stroke="#ccc" stroke-width="2"/>
+              <rect x="18" y="154" width="18" height="8" rx="4" fill="#82a82e"/>
+              <line x1="16" y1="172" x2="38" y2="172" stroke="#aaa" stroke-width="2"/>
+              <line x1="16" y1="180" x2="38" y2="180" stroke="#aaa" stroke-width="2"/>
+              <line x1="16" y1="188" x2="30" y2="188" stroke="#aaa" stroke-width="2"/>
+              <!-- Right arm out -->
+              <path d="M138,145 Q158,152 166,165" stroke="#b8e04a" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <circle cx="168" cy="168" r="10" fill="#a2cd3a"/>
+              <!-- Gold star badge on chest -->
+              <polygon points="100,145 104,157 117,157 107,165 111,177 100,169 89,177 93,165 83,157 96,157" fill="#f9ca24" stroke="#e0a800" stroke-width="1"/>
+              <!-- Head -->
+              <circle cx="100" cy="92" r="50" fill="#b8e04a"/>
+              <!-- Hair - professional bun -->
+              <ellipse cx="100" cy="46" rx="30" ry="16" fill="#5e7a1e"/>
+              <circle cx="100" cy="38" r="14" fill="#5e7a1e"/>
+              <!-- Glasses -->
+              <rect x="76" y="80" width="20" height="14" rx="6" fill="none" stroke="#5e7a1e" stroke-width="3"/>
+              <rect x="104" y="80" width="20" height="14" rx="6" fill="none" stroke="#5e7a1e" stroke-width="3"/>
+              <line x1="96" y1="87" x2="104" y2="87" stroke="#5e7a1e" stroke-width="3"/>
+              <!-- Eyes behind glasses -->
+              <circle cx="86" cy="87" r="5" fill="#3a5010"/>
+              <circle cx="114" cy="87" r="5" fill="#3a5010"/>
+              <circle cx="88" cy="85" r="2" fill="#fff"/>
+              <circle cx="116" cy="85" r="2" fill="#fff"/>
+              <!-- Nose -->
+              <ellipse cx="100" cy="98" rx="4" ry="3" fill="#82a82e"/>
+              <!-- Smile - confident -->
+              <path d="M85,108 Q100,120 115,108" stroke="#5e7a1e" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Cheeks -->
+              <ellipse cx="74" cy="100" rx="8" ry="5" fill="#c8f060" opacity="0.5"/>
+              <ellipse cx="126" cy="100" rx="8" ry="5" fill="#c8f060" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SLIDE 5: SAGE ===== -->
+    <div class="slide" id="slide-5">
+      <div class="value-slide">
+        <div class="vs-bg" style="background: linear-gradient(135deg, #ec008c 0%, #c4006f 60%, #8c004f 100%);"></div>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,50 C250,110 550,10 850,70 C1050,110 1180,20 1280,50 L1280,0 L0,0 Z" fill="#8c004f" opacity="0.6"/>
+        </svg>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,70 C250,10 550,110 850,50 C1050,10 1180,100 1280,70 L1280,120 L0,120 Z" fill="#8c004f" opacity="0.6"/>
+        </svg>
+
+        <div class="sparkle" style="top:16%;left:10%;font-size:clamp(16px,2.5vw,30px);color:#ffe0f5;">✿</div>
+        <div class="sparkle" style="top:18%;right:12%;font-size:clamp(12px,2vw,24px);color:#ffe0f5;">✿</div>
+        <div class="sparkle" style="bottom:22%;left:18%;font-size:clamp(10px,1.5vw,20px);color:#ffe0f5;">✿</div>
+        <div class="sparkle" style="top:56%;right:8%;font-size:clamp(14px,2vw,26px);color:#ffe0f5;">✿</div>
+
+        <div class="vs-content">
+          <div class="vs-left">
+            <div class="vs-number-badge" id="s5-badge">5</div>
+            <div class="vs-name" id="s5-name">SAGE</div>
+            <div class="vs-title" id="s5-title">Growth &amp; Reflection</div>
+            <div class="vs-statement" id="s5-stmt">"Continuous reflection, improvement, and professional growth."</div>
+          </div>
+          <div class="vs-mascot-wrap" id="s5-mascot">
+            <!-- SAGE SVG: pink round, plant sprout on head, magnifying glass -->
+            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body -->
+              <ellipse cx="100" cy="158" rx="60" ry="65" fill="#f566b8"/>
+              <!-- Left arm holding magnifying glass -->
+              <path d="M42,155 Q28,148 22,138" stroke="#f566b8" stroke-width="15" fill="none" stroke-linecap="round"/>
+              <!-- Magnifying glass -->
+              <circle cx="15" cy="128" r="16" fill="none" stroke="#fff" stroke-width="4"/>
+              <circle cx="15" cy="128" r="10" fill="#c8f5ff" opacity="0.5"/>
+              <line x1="26" y1="139" x2="34" y2="148" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              <!-- Right arm up -->
+              <path d="M158,148 Q172,138 178,125" stroke="#f566b8" stroke-width="15" fill="none" stroke-linecap="round"/>
+              <circle cx="180" cy="122" r="10" fill="#ec008c"/>
+              <!-- Legs -->
+              <ellipse cx="82" cy="216" rx="16" ry="12" fill="#c4006f"/>
+              <ellipse cx="118" cy="216" rx="16" ry="12" fill="#c4006f"/>
+              <!-- Head -->
+              <circle cx="100" cy="94" r="52" fill="#f566b8"/>
+              <!-- Plant sprout on head -->
+              <rect x="96" y="42" width="8" height="20" rx="4" fill="#5e7a1e"/>
+              <ellipse cx="92" cy="40" rx="12" ry="8" fill="#a2cd3a" transform="rotate(-20,92,40)"/>
+              <ellipse cx="108" cy="36" rx="12" ry="8" fill="#a2cd3a" transform="rotate(20,108,36)"/>
+              <circle cx="100" cy="44" r="5" fill="#82a82e"/>
+              <!-- Eyes -->
+              <circle cx="83" cy="88" r="12" fill="#fff"/>
+              <circle cx="117" cy="88" r="12" fill="#fff"/>
+              <circle cx="86" cy="90" r="7" fill="#7a004f"/>
+              <circle cx="120" cy="90" r="7" fill="#7a004f"/>
+              <circle cx="88" cy="87" r="3" fill="#fff"/>
+              <circle cx="122" cy="87" r="3" fill="#fff"/>
+              <!-- Eyebrows - thoughtful -->
+              <path d="M77,77 Q83,73 90,76" stroke="#c4006f" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M110,76 Q117,73 123,77" stroke="#c4006f" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Nose -->
+              <circle cx="100" cy="100" r="4" fill="#c4006f"/>
+              <!-- Smile - gentle -->
+              <path d="M86,110 Q100,122 114,110" stroke="#8c004f" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Cheeks -->
+              <ellipse cx="73" cy="103" rx="8" ry="5" fill="#ff80cc" opacity="0.5"/>
+              <ellipse cx="127" cy="103" rx="8" ry="5" fill="#ff80cc" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SLIDE 6: JAX ===== -->
+    <div class="slide" id="slide-6">
+      <div class="value-slide">
+        <div class="vs-bg" style="background: linear-gradient(135deg, #f26522 0%, #e55a10 40%, #f9ca24 100%);"></div>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,70 C200,20 500,110 800,30 C1000,0 1150,100 1280,60 L1280,0 L0,0 Z" fill="#c44a08" opacity="0.6"/>
+        </svg>
+        <svg viewBox="0 0 1280 120" preserveAspectRatio="none" style="position:absolute;bottom:0;left:0;width:100%;height:clamp(50px,10vw,120px);">
+          <path d="M0,50 C200,100 500,10 800,90 C1000,120 1150,20 1280,60 L1280,120 L0,120 Z" fill="#c44a08" opacity="0.6"/>
+        </svg>
+
+        <!-- Floating confetti decorations -->
+        <div class="sparkle" style="top:14%;left:8%;font-size:clamp(16px,2.5vw,32px);">🎉</div>
+        <div class="sparkle" style="top:20%;right:10%;font-size:clamp(12px,2vw,26px);">⭐</div>
+        <div class="sparkle" style="bottom:20%;left:15%;font-size:clamp(10px,1.5vw,22px);">🎈</div>
+        <div class="sparkle" style="top:54%;right:6%;font-size:clamp(14px,2vw,28px);">✨</div>
+
+        <div class="vs-content">
+          <div class="vs-left">
+            <div class="vs-number-badge" id="s6-badge">6</div>
+            <div class="vs-name" id="s6-name">JAX</div>
+            <div class="vs-title" id="s6-title">Joyful Play</div>
+            <div class="vs-statement" id="s6-stmt">"Joyful, meaningful, and play-based learning for all children."</div>
+          </div>
+          <div class="vs-mascot-wrap" id="s6-mascot">
+            <!-- JAX SVG: orange bouncy, colorful patches, arms up, confetti, U-shaped joy eyes -->
+            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+              <!-- Confetti around body -->
+              <rect x="20" y="80" width="10" height="6" rx="2" fill="#25c0d5" transform="rotate(-30,20,80)"/>
+              <rect x="165" y="70" width="10" height="6" rx="2" fill="#92278f" transform="rotate(20,165,70)"/>
+              <rect x="30" y="170" width="8" height="5" rx="2" fill="#a2cd3a" transform="rotate(45,30,170)"/>
+              <rect x="158" y="165" width="8" height="5" rx="2" fill="#ec008c" transform="rotate(-20,158,165)"/>
+              <circle cx="25" cy="130" r="5" fill="#f9ca24"/>
+              <circle cx="172" cy="125" r="5" fill="#25c0d5"/>
+              <circle cx="40" cy="55" r="4" fill="#92278f"/>
+              <circle cx="158" cy="50" r="4" fill="#ec008c"/>
+              <!-- Body -->
+              <ellipse cx="100" cy="158" rx="62" ry="64" fill="#ff8533"/>
+              <!-- Colorful patches on body -->
+              <ellipse cx="80" cy="152" rx="14" ry="12" fill="#25c0d5" opacity="0.7"/>
+              <ellipse cx="120" cy="160" rx="12" ry="10" fill="#92278f" opacity="0.7"/>
+              <ellipse cx="100" cy="175" rx="10" ry="9" fill="#a2cd3a" opacity="0.7"/>
+              <!-- Arms UP in joy -->
+              <path d="M42,145 Q28,120 22,100" stroke="#ff8533" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <path d="M158,145 Q172,120 178,100" stroke="#ff8533" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <!-- Hands with fingers up -->
+              <circle cx="20" cy="96" r="12" fill="#f26522"/>
+              <ellipse cx="12" cy="86" rx="5" ry="8" fill="#f26522"/>
+              <ellipse cx="20" cy="83" rx="5" ry="8" fill="#f26522"/>
+              <ellipse cx="28" cy="85" rx="5" ry="8" fill="#f26522"/>
+              <circle cx="180" cy="96" r="12" fill="#f26522"/>
+              <ellipse cx="172" cy="86" rx="5" ry="8" fill="#f26522"/>
+              <ellipse cx="180" cy="83" rx="5" ry="8" fill="#f26522"/>
+              <ellipse cx="188" cy="85" rx="5" ry="8" fill="#f26522"/>
+              <!-- Legs bouncy -->
+              <ellipse cx="80" cy="216" rx="18" ry="14" fill="#d4541a"/>
+              <ellipse cx="120" cy="212" rx="18" ry="14" fill="#d4541a"/>
+              <!-- Head -->
+              <circle cx="100" cy="90" r="54" fill="#ff8533"/>
+              <!-- Colorful patches on head -->
+              <ellipse cx="72" cy="76" rx="12" ry="10" fill="#ec008c" opacity="0.5"/>
+              <ellipse cx="128" cy="76" rx="12" ry="10" fill="#25c0d5" opacity="0.5"/>
+              <!-- U-shaped JOY eyes -->
+              <path d="M78,84 Q86,96 94,84" stroke="#7a2d00" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M106,84 Q114,96 122,84" stroke="#7a2d00" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <!-- Big grin -->
+              <path d="M75,108 Q100,132 125,108" stroke="#7a2d00" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M75,108 Q100,132 125,108 L122,106 Q100,128 78,106 Z" fill="#fff" opacity="0.5"/>
+              <!-- Cheeks big -->
+              <ellipse cx="68" cy="102" rx="11" ry="7" fill="#ffaa66" opacity="0.6"/>
+              <ellipse cx="132" cy="102" rx="11" ry="7" fill="#ffaa66" opacity="0.6"/>
+              <!-- Hair spiky fun -->
+              <path d="M80,38 L90,22 L95,38" fill="#d4541a"/>
+              <path d="M93,34 L100,16 L107,34" fill="#c44a08"/>
+              <path d="M105,38 L115,22 L120,38" fill="#d4541a"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SLIDE 7: FINALE ===== -->
+    <div class="slide" id="slide-7">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d1a3a,#1a0a30,#0d1a3a);"></div>
+      <!-- Color stripe accents -->
+      <div style="position:absolute;top:0;left:0;width:20%;height:8px;background:#25c0d5;"></div>
+      <div style="position:absolute;top:0;left:20%;width:20%;height:8px;background:#92278f;"></div>
+      <div style="position:absolute;top:0;left:40%;width:20%;height:8px;background:#f26522;"></div>
+      <div style="position:absolute;top:0;left:60%;width:20%;height:8px;background:#a2cd3a;"></div>
+      <div style="position:absolute;top:0;left:80%;width:20%;height:8px;background:#ec008c;"></div>
+
+      <div id="confetti-container" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;"></div>
+
+      <div class="finale-content">
+        <div class="finale-title" id="finale-title">Fair Play <span style="color:#25c0d5;">OOSH</span></div>
+        <div class="finale-row" id="finale-row">
+          <!-- Shelly mini -->
+          <svg class="finale-mascot" viewBox="0 0 200 240"><ellipse cx="100" cy="175" rx="55" ry="50" fill="#1a9db5" opacity="0.8"/><ellipse cx="100" cy="145" rx="62" ry="65" fill="#3dd6eb"/><circle cx="100" cy="88" r="52" fill="#3dd6eb"/><circle cx="82" cy="82" r="12" fill="#fff"/><circle cx="118" cy="82" r="12" fill="#fff"/><circle cx="85" cy="84" r="7" fill="#0e7a8e"/><circle cx="121" cy="84" r="7" fill="#0e7a8e"/><path d="M84,104 Q100,118 116,104" stroke="#0e7a8e" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>
+          <!-- Stella mini -->
+          <svg class="finale-mascot" viewBox="0 0 200 240"><ellipse cx="100" cy="155" rx="58" ry="62" fill="#b53db0"/><circle cx="100" cy="90" r="50" fill="#b53db0"/><polygon points="100,42 104,54 116,54 107,62 110,74 100,66 90,74 93,62 84,54 96,54" fill="#c44dbf"/><circle cx="84" cy="84" r="11" fill="#fff"/><circle cx="116" cy="84" r="11" fill="#fff"/><circle cx="87" cy="86" r="6" fill="#4a0047"/><circle cx="119" cy="86" r="6" fill="#4a0047"/><path d="M86,102 Q100,115 114,102" stroke="#7a1a7a" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <!-- Hugo mini -->
+          <svg class="finale-mascot" viewBox="0 0 200 240"><ellipse cx="100" cy="152" rx="64" ry="66" fill="#f58040"/><circle cx="100" cy="88" r="52" fill="#f58040"/><circle cx="83" cy="82" r="12" fill="#fff"/><circle cx="117" cy="82" r="12" fill="#fff"/><circle cx="86" cy="84" r="7" fill="#7a2d00"/><circle cx="120" cy="84" r="7" fill="#7a2d00"/><path d="M100,148 C100,148 82,136 82,124 C82,116 90,110 100,120 C110,110 118,116 118,124 C118,136 100,148 100,148 Z" fill="#fff"/><path d="M83,106 Q100,120 117,106" stroke="#a83e10" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>
+          <!-- Grace mini -->
+          <svg class="finale-mascot" viewBox="0 0 200 250"><rect x="62" y="128" width="76" height="90" rx="28" fill="#b8e04a"/><circle cx="100" cy="92" r="50" fill="#b8e04a"/><ellipse cx="100" cy="46" rx="30" ry="16" fill="#5e7a1e"/><rect x="76" y="80" width="20" height="14" rx="6" fill="none" stroke="#5e7a1e" stroke-width="3"/><rect x="104" y="80" width="20" height="14" rx="6" fill="none" stroke="#5e7a1e" stroke-width="3"/><line x1="96" y1="87" x2="104" y2="87" stroke="#5e7a1e" stroke-width="3"/><circle cx="86" cy="87" r="5" fill="#3a5010"/><circle cx="114" cy="87" r="5" fill="#3a5010"/><path d="M85,108 Q100,120 115,108" stroke="#5e7a1e" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <!-- Sage mini -->
+          <svg class="finale-mascot" viewBox="0 0 200 250"><ellipse cx="100" cy="158" rx="60" ry="65" fill="#f566b8"/><circle cx="100" cy="94" r="52" fill="#f566b8"/><rect x="96" y="42" width="8" height="20" rx="4" fill="#5e7a1e"/><ellipse cx="92" cy="40" rx="12" ry="8" fill="#a2cd3a" transform="rotate(-20,92,40)"/><ellipse cx="108" cy="36" rx="12" ry="8" fill="#a2cd3a" transform="rotate(20,108,36)"/><circle cx="83" cy="88" r="12" fill="#fff"/><circle cx="117" cy="88" r="12" fill="#fff"/><circle cx="86" cy="90" r="7" fill="#7a004f"/><circle cx="120" cy="90" r="7" fill="#7a004f"/><path d="M86,110 Q100,122 114,110" stroke="#8c004f" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <!-- Jax mini -->
+          <svg class="finale-mascot" viewBox="0 0 200 250"><ellipse cx="100" cy="158" rx="62" ry="64" fill="#ff8533"/><circle cx="100" cy="90" r="54" fill="#ff8533"/><path d="M78,84 Q86,96 94,84" stroke="#7a2d00" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M106,84 Q114,96 122,84" stroke="#7a2d00" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M75,108 Q100,132 125,108" stroke="#7a2d00" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="finale-tagline" id="finale-tagline">Together, we make every child's day amazing!</div>
+        <div class="finale-brand" id="finale-brand"><span>Fair Play</span> OOSH</div>
+      </div>
+    </div>
+
+  </div><!-- end #stage -->
+
+  <!-- ===== CONTROLS ===== -->
+  <div id="controls">
+    <div id="progress-bar-wrap">
+      <div id="progress-bar"></div>
+    </div>
+    <div class="controls-row">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="ctrl-btn" id="btn-prev">◀</button>
+        <button class="ctrl-btn" id="btn-play">⏸</button>
+        <button class="ctrl-btn" id="btn-next">▶</button>
+      </div>
+      <div id="slide-dots"></div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div id="speed-btns">
+          <button class="ctrl-btn" data-speed="0.5">0.5x</button>
+          <button class="ctrl-btn active" data-speed="1">1x</button>
+          <button class="ctrl-btn" data-speed="2">2x</button>
+        </div>
+        <div id="slide-counter">1 / 8</div>
+      </div>
+    </div>
+  </div>
+</div><!-- end #stage-wrapper -->
+
+<script>
+// ============================================================
+// SLIDE TIMING (seconds at 1x speed)
+// ============================================================
+const SLIDE_DURATIONS = [3, 4, 4, 4, 4, 4, 4, 5]; // 8 slides
+const TOTAL_SLIDES = 8;
+let currentSlide = 0;
+let isPlaying = true;
+let speedMul = 1;
+let timer = null;
+let slideStartTime = null;
+let slideElapsed = 0; // ms elapsed when paused
+
+// ============================================================
+// INTRO STAR FIELD
+// ============================================================
+(function buildIntroStars() {
+  const container = document.getElementById('intro-stars');
+  for (let i = 0; i < 60; i++) {
+    const d = document.createElement('div');
+    d.classList.add('star-dot');
+    const size = Math.random() * 3 + 1;
+    d.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;top:${Math.random()*100}%;
+      background:#fff;opacity:${Math.random()*0.6+0.1};
+    `;
+    container.appendChild(d);
+  }
+})();
+
+// ============================================================
+// SLIDE DOT INDICATORS
+// ============================================================
+const dotsWrap = document.getElementById('slide-dots');
+for (let i = 0; i < TOTAL_SLIDES; i++) {
+  const d = document.createElement('div');
+  d.classList.add('sdot');
+  d.dataset.slide = i;
+  d.addEventListener('click', () => goToSlide(i));
+  dotsWrap.appendChild(d);
+}
+
+// ============================================================
+// CONFETTI GENERATION
+// ============================================================
+const confettiColors = ['#25c0d5','#92278f','#f26522','#a2cd3a','#ec008c','#f9ca24','#ff6b6b','#4dabf7'];
+(function buildConfetti() {
+  const container = document.getElementById('confetti-container');
+  for (let i = 0; i < 50; i++) {
+    const p = document.createElement('div');
+    p.classList.add('confetti-piece');
+    const size = Math.random() * 6 + 6;
+    const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    const dur = (Math.random() * 2 + 2).toFixed(1);
+    const delay = (Math.random() * 3).toFixed(1);
+    const rot = Math.floor(Math.random() * 360);
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${size}px;height:${size}px;
+      background:${color};
+      transform:rotate(${rot}deg);
+      animation-duration:${dur}s;
+      animation-delay:-${delay}s;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+// ============================================================
+// ANIMATION HELPERS
+// ============================================================
+function resetSlideAnims(slideId) {
+  const s = document.getElementById(slideId);
+  if (!s) return;
+  // reset all animated elements
+  s.querySelectorAll('.vs-number-badge,.vs-name,.vs-title,.vs-statement,.vs-mascot-wrap,.sparkle').forEach(el => {
+    el.style.animation = 'none';
+    el.style.opacity = '0';
+    el.style.transform = '';
+  });
+  // intro elements
+  ['intro-logo','intro-subtitle','intro-tagline'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.animation='none'; el.style.opacity='0'; el.style.transform='scale(0.5)'; }
+  });
+  document.querySelectorAll('.intro-dot').forEach(el => {
+    el.style.animation='none'; el.style.opacity='0'; el.style.transform='scale(0)';
+  });
+  // finale
+  ['finale-title','finale-row','finale-tagline','finale-brand'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.animation='none'; el.style.opacity='0'; el.style.transform=''; }
+  });
+}
+
+function animateSlide(idx) {
+  const slideId = 'slide-' + idx;
+
+  if (idx === 0) animateIntro();
+  else if (idx >= 1 && idx <= 6) animateValueSlide(idx);
+  else if (idx === 7) animateFinale();
+}
+
+// --- INTRO ANIMATION ---
+function animateIntro() {
+  const logo = document.getElementById('intro-logo');
+  const subtitle = document.getElementById('intro-subtitle');
+  const dots = document.querySelectorAll('.intro-dot');
+  const tagline = document.getElementById('intro-tagline');
+
+  logo.style.animation = 'none';
+  setTimeout(() => {
+    logo.style.animation = 'logoBounce 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards';
+  }, 100);
+
+  setTimeout(() => {
+    subtitle.style.animation = 'fadeIn 0.5s ease forwards';
+  }, 700);
+
+  dots.forEach((dot, i) => {
+    setTimeout(() => {
+      dot.style.animation = 'dotPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards';
+    }, 1000 + i * 150);
+  });
+
+  setTimeout(() => {
+    tagline.style.animation = 'fadeIn 0.5s ease forwards';
+  }, 2000);
+}
+
+// --- VALUE SLIDE ANIMATION ---
+function animateValueSlide(idx) {
+  const badge   = document.getElementById('s'+idx+'-badge');
+  const name    = document.getElementById('s'+idx+'-name');
+  const title   = document.getElementById('s'+idx+'-title');
+  const stmt    = document.getElementById('s'+idx+'-stmt');
+  const mascot  = document.getElementById('s'+idx+'-mascot');
+  const sparkles = document.querySelectorAll('#slide-'+idx+' .sparkle');
+
+  // Mascot bounces in first
+  setTimeout(() => {
+    mascot.style.animation = 'bounceIn 0.9s cubic-bezier(0.34,1.56,0.64,1) forwards';
+  }, 100);
+
+  // Badge slides from left
+  setTimeout(() => {
+    badge.style.animation = 'fadeSlideLeft 0.5s ease forwards';
+  }, 400);
+
+  // Name slides from right
+  setTimeout(() => {
+    name.style.animation = 'fadeSlideRight 0.5s ease forwards';
+  }, 600);
+
+  // Title bounces up
+  setTimeout(() => {
+    title.style.animation = 'fadeInUp 0.5s ease forwards';
+  }, 800);
+
+  // Statement fades in
+  setTimeout(() => {
+    stmt.style.animation = 'fadeIn 0.5s ease forwards';
+  }, 1100);
+
+  // Sparkles
+  sparkles.forEach((sp, i) => {
+    setTimeout(() => {
+      sp.style.color = '#fff';
+      sp.style.animation = 'sparkleAnim 1.5s ease-in-out infinite';
+      sp.style.animationDelay = (i * 0.3) + 's';
+    }, 500 + i * 200);
+  });
+
+  // Mascot floats after bounce
+  setTimeout(() => {
+    mascot.style.animation = 'floatBob 3s ease-in-out infinite';
+    mascot.style.opacity = '1';
+    mascot.style.transform = 'translateY(0)';
+  }, 1100);
+}
+
+// --- FINALE ANIMATION ---
+function animateFinale() {
+  const title   = document.getElementById('finale-title');
+  const row     = document.getElementById('finale-row');
+  const tagline = document.getElementById('finale-tagline');
+  const brand   = document.getElementById('finale-brand');
+
+  setTimeout(() => {
+    title.style.animation = 'finalePop 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards';
+  }, 200);
+
+  setTimeout(() => {
+    row.style.animation = 'fadeInUp 0.6s ease forwards';
+  }, 700);
+
+  setTimeout(() => {
+    tagline.style.animation = 'fadeIn 0.5s ease forwards';
+  }, 1200);
+
+  setTimeout(() => {
+    brand.style.animation = 'finalePop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards';
+  }, 1700);
+}
+
+// ============================================================
+// SLIDE TRANSITION
+// ============================================================
+function goToSlide(idx) {
+  clearTimeout(timer);
+
+  const oldSlide = document.getElementById('slide-' + currentSlide);
+  const newSlide = document.getElementById('slide-' + idx);
+
+  // Reset animations on outgoing slide
+  resetSlideAnims('slide-' + currentSlide);
+
+  oldSlide.classList.remove('active');
+  currentSlide = idx;
+  newSlide.classList.add('active');
+
+  // Reset animations on new slide then trigger
+  resetSlideAnims('slide-' + currentSlide);
+  requestAnimationFrame(() => requestAnimationFrame(() => animateSlide(currentSlide)));
+
+  updateUI();
+
+  if (isPlaying) scheduleNext();
+}
+
+function nextSlide() {
+  const next = (currentSlide + 1) % TOTAL_SLIDES;
+  goToSlide(next);
+}
+
+function scheduleNext() {
+  clearTimeout(timer);
+  const dur = SLIDE_DURATIONS[currentSlide] * 1000 / speedMul;
+  slideStartTime = Date.now();
+  slideElapsed = 0;
+
+  function tick() {
+    if (!isPlaying) return;
+    const elapsed = Date.now() - slideStartTime + slideElapsed;
+    const fraction = Math.min(elapsed / dur, 1);
+    updateProgressBar(fraction);
+    if (fraction >= 1) {
+      nextSlide();
+    } else {
+      timer = setTimeout(tick, 50);
+    }
+  }
+  timer = setTimeout(tick, 50);
+}
+
+function updateProgressBar(fraction) {
+  const totalFraction = (currentSlide + fraction) / TOTAL_SLIDES;
+  document.getElementById('progress-bar').style.width = (totalFraction * 100) + '%';
+}
+
+function updateUI() {
+  // dots
+  document.querySelectorAll('.sdot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+  // counter
+  document.getElementById('slide-counter').textContent = (currentSlide + 1) + ' / ' + TOTAL_SLIDES;
+  // progress bar base
+  updateProgressBar(0);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('btn-play').addEventListener('click', () => {
+  isPlaying = !isPlaying;
+  document.getElementById('btn-play').textContent = isPlaying ? '⏸' : '▶';
+  if (isPlaying) {
+    scheduleNext();
+  } else {
+    clearTimeout(timer);
+  }
+});
+
+document.getElementById('btn-prev').addEventListener('click', () => {
+  const prev = (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
+  goToSlide(prev);
+});
+
+document.getElementById('btn-next').addEventListener('click', () => {
+  nextSlide();
+});
+
+document.querySelectorAll('#speed-btns .ctrl-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#speed-btns .ctrl-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    speedMul = parseFloat(btn.dataset.speed);
+    if (isPlaying) scheduleNext();
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+updateUI();
+animateSlide(0);
+scheduleNext();
+</script>
+</body>
+</html>
