@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Play OOSH – Our Values Mascots</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #1a1a2e;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  header {
+    text-align: center;
+    padding: 48px 24px 36px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 3px solid #25c0d5;
+  }
+  header h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  header h1 span { color: #25c0d5; }
+  header p {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    color: #aac;
+    font-weight: 600;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    padding: 48px 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── POSTER CARD ── */
+  .poster {
+    width: 400px;
+    height: 566px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    flex-shrink: 0;
+    page-break-after: always;
+  }
+
+  .poster-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .poster-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  /* value badge */
+  .value-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .mascot-area {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 42px;
+    height: 310px;
+  }
+
+  .mascot-area svg {
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+  }
+
+  .text-area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 18px 24px 20px;
+    z-index: 5;
+  }
+
+  .eyebrow {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+
+  .value-name {
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .value-statement {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.55;
+    opacity: 0.88;
+    max-width: 310px;
+  }
+
+  .footer-brand {
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.55;
+    z-index: 10;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    header { display: none; }
+    .grid { padding: 0; gap: 0; }
+    .poster {
+      width: 210mm;
+      height: 297mm;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+    }
+    .mascot-area { height: 55%; }
+    .value-name { font-size: 2.2rem; }
+    .value-statement { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Our Values <span>Mascots</span></h1>
+  <p>Fair Play OOSH — Out of School Hours Care</p>
+</header>
+
+<div class="grid">
+
+  <!-- ══════════════════════════════════════════
+       01  SHELLY  —  Safety & Wellbeing  (Cyan)
+       ══════════════════════════════════════════ -->
+  <div class="poster">
+    <!-- Background SVG -->
+    <svg class="poster-bg" viewBox="0 0 400 566" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main wave blob covering top 75% -->
+      <path d="M0,0 L400,0 L400,390 Q320,430 240,400 Q160,370 80,410 Q30,430 0,420 Z" fill="#25c0d5"/>
+      <!-- Second subtle darker wave -->
+      <path d="M0,400 Q60,375 130,395 Q210,415 290,388 Q350,368 400,385 L400,440 Q330,420 250,445 Q170,470 90,448 Q40,435 0,450 Z" fill="#1ea3b6"/>
+      <!-- White base -->
+      <rect x="0" y="430" width="400" height="136" fill="#fff"/>
+      <!-- Decorative sparkles -->
+      <circle cx="340" cy="60" r="6" fill="#fff" opacity="0.35"/>
+      <circle cx="360" cy="90" r="3.5" fill="#fff" opacity="0.25"/>
+      <circle cx="50" cy="280" r="5" fill="#fff" opacity="0.2"/>
+      <circle cx="370" cy="200" r="4" fill="#fff" opacity="0.2"/>
+      <polygon points="320,140 324,152 337,152 327,160 330,173 320,165 310,173 313,160 303,152 316,152" fill="#fff" opacity="0.2"/>
+      <polygon points="65,120 68,130 78,130 70,136 73,146 65,140 57,146 60,136 52,130 62,130" fill="#fff" opacity="0.18"/>
+    </svg>
+
+    <div class="poster-content">
+      <!-- Badge -->
+      <div class="value-badge" style="color:#25c0d5;">01</div>
+
+      <!-- Mascot -->
+      <div class="mascot-area">
+        <svg width="200" height="235" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cape -->
+          <path d="M72,105 Q55,130 48,165 Q60,155 80,160 L88,120 Z" fill="#1ea3b6"/>
+          <path d="M128,105 Q145,130 152,165 Q140,155 120,160 L112,120 Z" fill="#1ea3b6"/>
+          <!-- Body -->
+          <ellipse cx="100" cy="150" rx="42" ry="46" fill="#25c0d5"/>
+          <!-- Shield badge on body -->
+          <path d="M100,133 L115,140 L115,158 Q115,168 100,175 Q85,168 85,158 L85,140 Z" fill="#fff" opacity="0.9"/>
+          <path d="M100,139 L110,144 L110,157 Q110,164 100,170 Q90,164 90,157 L90,144 Z" fill="#25c0d5" opacity="0.5"/>
+          <text x="100" y="160" text-anchor="middle" font-size="10" font-family="Nunito" font-weight="900" fill="#fff">✓</text>
+          <!-- Arms spread wide -->
+          <ellipse cx="50" cy="145" rx="18" ry="10" fill="#25c0d5" transform="rotate(-20,50,145)"/>
+          <ellipse cx="150" cy="145" rx="18" ry="10" fill="#25c0d5" transform="rotate(20,150,145)"/>
+          <!-- Hands -->
+          <circle cx="36" cy="140" r="9" fill="#25c0d5"/>
+          <circle cx="164" cy="140" r="9" fill="#25c0d5"/>
+          <!-- Head -->
+          <circle cx="100" cy="82" r="52" fill="#25c0d5"/>
+          <!-- Rosy cheeks -->
+          <ellipse cx="74" cy="96" rx="10" ry="7" fill="#1ea3b6" opacity="0.45"/>
+          <ellipse cx="126" cy="96" rx="10" ry="7" fill="#1ea3b6" opacity="0.45"/>
+          <!-- Eyes -->
+          <circle cx="84" cy="78" r="17" fill="#fff"/>
+          <circle cx="116" cy="78" r="17" fill="#fff"/>
+          <circle cx="88" cy="80" r="10" fill="#1a3a4a"/>
+          <circle cx="120" cy="80" r="10" fill="#1a3a4a"/>
+          <circle cx="92" cy="74" r="4" fill="#fff"/>
+          <circle cx="124" cy="74" r="4" fill="#fff"/>
+          <!-- Eyebrows -->
+          <path d="M74,65 Q84,60 94,65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M106,65 Q116,60 126,65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Smile -->
+          <path d="M82,100 Q100,116 118,100" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- Legs -->
+          <ellipse cx="86" cy="198" rx="14" ry="20" fill="#1ea3b6"/>
+          <ellipse cx="114" cy="198" rx="14" ry="20" fill="#1ea3b6"/>
+          <!-- Feet -->
+          <ellipse cx="84" cy="218" rx="16" ry="9" fill="#25c0d5"/>
+          <ellipse cx="116" cy="218" rx="16" ry="9" fill="#25c0d5"/>
+          <!-- Sparkles around -->
+          <polygon points="170,70 173,79 182,79 175,84 178,93 170,88 162,93 165,84 158,79 167,79" fill="#f26522" opacity="0.85"/>
+          <circle cx="28" cy="100" r="5" fill="#a2cd3a" opacity="0.9"/>
+          <circle cx="175" cy="110" r="4" fill="#ec008c" opacity="0.8"/>
+          <polygon points="32,65 34,71 40,71 35,75 37,81 32,77 27,81 29,75 24,71 30,71" fill="#fff" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <!-- Text area -->
+      <div class="text-area" style="color:#1a3a4a;">
+        <div class="eyebrow" style="color:#25c0d5;">Our Values</div>
+        <div class="value-name">Safety &amp;<br>Wellbeing</div>
+        <div class="value-statement">"The safety and wellbeing of every child is our highest priority."</div>
+      </div>
+
+      <div class="footer-brand" style="color:#25c0d5;">Fair Play OOSH</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       02  STELLA  —  Inclusion & Equity  (Purple)
+       ══════════════════════════════════════════ -->
+  <div class="poster">
+    <svg class="poster-bg" viewBox="0 0 400 566" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L400,0 L400,400 Q310,440 220,408 Q140,378 60,418 Q25,435 0,428 Z" fill="#92278f"/>
+      <path d="M0,408 Q70,382 150,402 Q230,422 310,392 Q360,374 400,392 L400,448 Q320,428 240,452 Q160,476 80,454 Q35,440 0,458 Z" fill="#7a2178"/>
+      <rect x="0" y="438" width="400" height="128" fill="#fff"/>
+      <!-- Rainbow arc decorative -->
+      <path d="M80,30 Q200,-20 320,30" stroke="#f26522" stroke-width="4" fill="none" opacity="0.3"/>
+      <path d="M90,45 Q200,-5 310,45" stroke="#a2cd3a" stroke-width="4" fill="none" opacity="0.3"/>
+      <path d="M100,60 Q200,10 300,60" stroke="#25c0d5" stroke-width="4" fill="none" opacity="0.3"/>
+      <!-- Dots -->
+      <circle cx="55" cy="100" r="8" fill="#f26522" opacity="0.4"/>
+      <circle cx="340" cy="80" r="6" fill="#a2cd3a" opacity="0.4"/>
+      <circle cx="360" cy="150" r="5" fill="#ec008c" opacity="0.35"/>
+      <circle cx="40" cy="200" r="5" fill="#25c0d5" opacity="0.35"/>
+      <polygon points="340,200 344,213 357,213 347,221 350,234 340,226 330,234 333,221 323,213 336,213" fill="#fff" opacity="0.2"/>
+    </svg>
+
+    <div class="poster-content">
+      <div class="value-badge" style="color:#92278f;">02</div>
+
+      <div class="mascot-area">
+        <svg width="200" height="235" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg">
+          <!-- Star burst body points -->
+          <polygon points="100,68 108,88 130,82 118,100 138,112 116,114 118,136 100,124 82,136 84,114 62,112 82,100 70,82 92,88" fill="#92278f"/>
+          <!-- Inner star body fill -->
+          <ellipse cx="100" cy="155" rx="38" ry="42" fill="#92278f"/>
+          <!-- Rainbow arc above head -->
+          <path d="M58,78 Q100,40 142,78" stroke="#f26522" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M64,88 Q100,52 136,88" stroke="#a2cd3a" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M70,98 Q100,64 130,98" stroke="#25c0d5" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- Arms open wide -->
+          <ellipse cx="50" cy="148" rx="20" ry="9" fill="#92278f" transform="rotate(-15,50,148)"/>
+          <ellipse cx="150" cy="148" rx="20" ry="9" fill="#92278f" transform="rotate(15,150,148)"/>
+          <circle cx="34" cy="143" r="10" fill="#92278f"/>
+          <circle cx="166" cy="143" r="10" fill="#92278f"/>
+          <!-- Head -->
+          <circle cx="100" cy="82" r="50" fill="#92278f"/>
+          <!-- Cheeks -->
+          <ellipse cx="75" cy="96" rx="10" ry="7" fill="#7a2178" opacity="0.5"/>
+          <ellipse cx="125" cy="96" rx="10" ry="7" fill="#7a2178" opacity="0.5"/>
+          <!-- Eyes -->
+          <circle cx="85" cy="78" r="17" fill="#fff"/>
+          <circle cx="115" cy="78" r="17" fill="#fff"/>
+          <circle cx="89" cy="80" r="10" fill="#2a1a3a"/>
+          <circle cx="119" cy="80" r="10" fill="#2a1a3a"/>
+          <circle cx="93" cy="74" r="4" fill="#fff"/>
+          <circle cx="123" cy="74" r="4" fill="#fff"/>
+          <!-- Brows -->
+          <path d="M75,65 Q85,59 95,65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M105,65 Q115,59 125,65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Smile -->
+          <path d="M82,100 Q100,117 118,100" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- Diversity dots around -->
+          <circle cx="28" cy="158" r="6" fill="#f26522"/>
+          <circle cx="172" cy="158" r="6" fill="#25c0d5"/>
+          <circle cx="28" cy="172" r="6" fill="#a2cd3a"/>
+          <circle cx="172" cy="172" r="6" fill="#ec008c"/>
+          <!-- Legs -->
+          <ellipse cx="86" cy="198" rx="13" ry="19" fill="#7a2178"/>
+          <ellipse cx="114" cy="198" rx="13" ry="19" fill="#7a2178"/>
+          <ellipse cx="84" cy="216" rx="15" ry="8" fill="#92278f"/>
+          <ellipse cx="116" cy="216" rx="15" ry="8" fill="#92278f"/>
+          <!-- Sparkles -->
+          <polygon points="170,60 173,69 182,69 175,74 178,83 170,78 162,83 165,74 158,69 167,69" fill="#f26522" opacity="0.9"/>
+          <polygon points="30,60 32,67 39,67 34,71 36,78 30,74 24,78 26,71 21,67 28,67" fill="#a2cd3a" opacity="0.85"/>
+          <circle cx="170" cy="100" r="5" fill="#ec008c" opacity="0.9"/>
+        </svg>
+      </div>
+
+      <div class="text-area" style="color:#2a1a3a;">
+        <div class="eyebrow" style="color:#92278f;">Our Values</div>
+        <div class="value-name">Inclusion &amp;<br>Equity</div>
+        <div class="value-statement">"Inclusion, equity, and respect for all individuals, no exceptions."</div>
+      </div>
+
+      <div class="footer-brand" style="color:#92278f;">Fair Play OOSH</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       03  HUGO  —  Partnerships  (Orange)
+       ══════════════════════════════════════════ -->
+  <div class="poster">
+    <svg class="poster-bg" viewBox="0 0 400 566" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L400,0 L400,395 Q300,445 200,410 Q110,378 40,420 Q18,433 0,425 Z" fill="#f26522"/>
+      <path d="M0,410 Q80,385 160,405 Q245,425 325,395 Q372,377 400,396 L400,452 Q315,430 235,455 Q150,480 70,458 Q28,444 0,460 Z" fill="#d8531a"/>
+      <rect x="0" y="440" width="400" height="126" fill="#fff"/>
+      <!-- Hearts decorative -->
+      <path d="M340,80 C340,76 337,72 332,72 C328,72 325,75 325,75 C325,75 322,72 318,72 C313,72 310,76 310,80 C310,87 325,96 325,96 C325,96 340,87 340,80 Z" fill="#fff" opacity="0.25"/>
+      <path d="M75,160 C75,157 73,154 70,154 C67,154 65,156 65,156 C65,156 63,154 60,154 C57,154 55,157 55,160 C55,165 65,172 65,172 C65,172 75,165 75,160 Z" fill="#fff" opacity="0.25"/>
+      <circle cx="360" cy="160" r="5" fill="#fff" opacity="0.3"/>
+      <circle cx="40" cy="80" r="6" fill="#fff" opacity="0.25"/>
+      <polygon points="355,260 358,270 368,270 360,276 363,286 355,280 347,286 350,276 342,270 352,270" fill="#fff" opacity="0.2"/>
+    </svg>
+
+    <div class="poster-content">
+      <div class="value-badge" style="color:#f26522;">03</div>
+
+      <div class="mascot-area">
+        <svg width="200" height="235" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg">
+          <!-- Body -->
+          <ellipse cx="100" cy="155" rx="44" ry="48" fill="#f26522"/>
+          <!-- Heart on chest -->
+          <path d="M112,146 C112,141 108,137 103,137 C100,137 100,139 100,139 C100,139 100,137 97,137 C92,137 88,141 88,146 C88,155 100,163 100,163 C100,163 112,155 112,146 Z" fill="#fff" opacity="0.92"/>
+          <!-- Arms reaching out -->
+          <ellipse cx="46" cy="148" rx="22" ry="10" fill="#f26522" transform="rotate(-25,46,148)"/>
+          <ellipse cx="154" cy="148" rx="22" ry="10" fill="#f26522" transform="rotate(25,154,148)"/>
+          <circle cx="28" cy="138" r="11" fill="#f26522"/>
+          <circle cx="172" cy="138" r="11" fill="#f26522"/>
+          <!-- Linking hearts floating -->
+          <path d="M22,125 C22,122 20,119 17,119 C14,119 12,122 12,122 C12,122 10,119 7,119 C4,119 2,122 2,125 C2,130 12,137 12,137 C12,137 22,130 22,125 Z" fill="#ec008c" opacity="0.85"/>
+          <path d="M198,118 C198,115 196,112 193,112 C190,112 188,115 188,115 C188,115 186,112 183,112 C180,112 178,115 178,118 C178,123 188,130 188,130 C188,130 198,123 198,118 Z" fill="#92278f" opacity="0.85"/>
+          <path d="M170,60 C170,57 168,54 165,54 C162,54 160,57 160,57 C160,57 158,54 155,54 C152,54 150,57 150,60 C150,65 160,72 160,72 C160,72 170,65 170,60 Z" fill="#fff" opacity="0.7"/>
+          <!-- Head -->
+          <circle cx="100" cy="82" r="52" fill="#f26522"/>
+          <!-- Cheeks -->
+          <ellipse cx="74" cy="97" rx="11" ry="7" fill="#d8531a" opacity="0.5"/>
+          <ellipse cx="126" cy="97" rx="11" ry="7" fill="#d8531a" opacity="0.5"/>
+          <!-- Eyes -->
+          <circle cx="84" cy="78" r="17" fill="#fff"/>
+          <circle cx="116" cy="78" r="17" fill="#fff"/>
+          <circle cx="88" cy="80" r="10" fill="#2a1500"/>
+          <circle cx="120" cy="80" r="10" fill="#2a1500"/>
+          <circle cx="92" cy="74" r="4" fill="#fff"/>
+          <circle cx="124" cy="74" r="4" fill="#fff"/>
+          <!-- Brows -->
+          <path d="M74,65 Q84,59 94,65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M106,65 Q116,59 126,65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Big smile -->
+          <path d="M80,100 Q100,118 120,100" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- Legs -->
+          <ellipse cx="86" cy="200" rx="14" ry="20" fill="#d8531a"/>
+          <ellipse cx="114" cy="200" rx="14" ry="20" fill="#d8531a"/>
+          <ellipse cx="84" cy="219" rx="16" ry="9" fill="#f26522"/>
+          <ellipse cx="116" cy="219" rx="16" ry="9" fill="#f26522"/>
+          <!-- Stars -->
+          <polygon points="38,70 41,79 50,79 43,84 46,93 38,88 30,93 33,84 26,79 35,79" fill="#a2cd3a" opacity="0.9"/>
+          <circle cx="168" cy="72" r="5" fill="#25c0d5" opacity="0.9"/>
+          <circle cx="30" cy="175" r="4" fill="#fff" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <div class="text-area" style="color:#2a1200;">
+        <div class="eyebrow" style="color:#f26522;">Our Values</div>
+        <div class="value-name">Partnerships</div>
+        <div class="value-statement">"Authentic collaborative partnerships with families and communities."</div>
+      </div>
+
+      <div class="footer-brand" style="color:#f26522;">Fair Play OOSH</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       04  GRACE  —  Integrity & Professionalism  (Green)
+       ══════════════════════════════════════════ -->
+  <div class="poster">
+    <svg class="poster-bg" viewBox="0 0 400 566" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L400,0 L400,400 Q295,448 195,412 Q105,380 35,422 Q14,435 0,427 Z" fill="#a2cd3a"/>
+      <path d="M0,415 Q75,390 158,410 Q242,430 322,400 Q368,382 400,400 L400,456 Q318,435 238,460 Q155,484 74,462 Q30,448 0,464 Z" fill="#87ae29"/>
+      <rect x="0" y="444" width="400" height="122" fill="#fff"/>
+      <!-- Stars floating -->
+      <polygon points="340,70 344,83 357,83 347,91 350,104 340,96 330,104 333,91 323,83 336,83" fill="#fff" opacity="0.28"/>
+      <polygon points="60,180 63,189 72,189 65,194 68,203 60,198 52,203 55,194 48,189 57,189" fill="#fff" opacity="0.22"/>
+      <polygon points="370,200 373,209 382,209 375,214 378,223 370,218 362,223 365,214 358,209 367,209" fill="#f26522" opacity="0.4"/>
+      <circle cx="50" cy="90" r="5" fill="#fff" opacity="0.3"/>
+      <circle cx="355" cy="155" r="4" fill="#fff" opacity="0.25"/>
+    </svg>
+
+    <div class="poster-content">
+      <div class="value-badge" style="color:#a2cd3a;">04</div>
+
+      <div class="mascot-area">
+        <svg width="200" height="235" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg">
+          <!-- Body – upright, slightly taller -->
+          <rect x="66" y="118" width="68" height="78" rx="22" fill="#a2cd3a"/>
+          <!-- Clipboard in right hand -->
+          <rect x="140" y="120" width="30" height="38" rx="4" fill="#fff" opacity="0.95"/>
+          <rect x="148" y="116" width="14" height="8" rx="3" fill="#87ae29"/>
+          <line x1="145" y1="131" x2="165" y2="131" stroke="#a2cd3a" stroke-width="2"/>
+          <line x1="145" y1="138" x2="165" y2="138" stroke="#a2cd3a" stroke-width="2"/>
+          <line x1="145" y1="145" x2="158" y2="145" stroke="#a2cd3a" stroke-width="2"/>
+          <!-- Gold star badge on chest -->
+          <polygon points="100,136 103,146 113,146 105,152 108,162 100,156 92,162 95,152 87,146 97,146" fill="#f26522"/>
+          <!-- Arms -->
+          <ellipse cx="52" cy="148" rx="18" ry="9" fill="#a2cd3a" transform="rotate(10,52,148)"/>
+          <ellipse cx="148" cy="135" rx="18" ry="9" fill="#a2cd3a" transform="rotate(-30,148,135)"/>
+          <circle cx="38" cy="152" r="10" fill="#a2cd3a"/>
+          <circle cx="158" cy="122" r="10" fill="#a2cd3a"/>
+          <!-- Head -->
+          <circle cx="100" cy="80" r="52" fill="#a2cd3a"/>
+          <!-- Cheeks -->
+          <ellipse cx="74" cy="95" rx="11" ry="7" fill="#87ae29" opacity="0.5"/>
+          <ellipse cx="126" cy="95" rx="11" ry="7" fill="#87ae29" opacity="0.5"/>
+          <!-- Eyes -->
+          <circle cx="84" cy="76" r="17" fill="#fff"/>
+          <circle cx="116" cy="76" r="17" fill="#fff"/>
+          <circle cx="88" cy="78" r="10" fill="#1a2a00"/>
+          <circle cx="120" cy="78" r="10" fill="#1a2a00"/>
+          <circle cx="92" cy="72" r="4" fill="#fff"/>
+          <circle cx="124" cy="72" r="4" fill="#fff"/>
+          <!-- Confident brows – slightly arched -->
+          <path d="M74,63 Q84,56 94,61" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <path d="M106,61 Q116,56 126,63" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <!-- Smile -->
+          <path d="M82,98 Q100,114 118,98" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- Legs -->
+          <ellipse cx="86" cy="198" rx="13" ry="20" fill="#87ae29"/>
+          <ellipse cx="114" cy="198" rx="13" ry="20" fill="#87ae29"/>
+          <ellipse cx="84" cy="217" rx="15" ry="8" fill="#a2cd3a"/>
+          <ellipse cx="116" cy="217" rx="15" ry="8" fill="#a2cd3a"/>
+          <!-- Stars floating around -->
+          <polygon points="170,75 173,84 182,84 175,89 178,98 170,93 162,98 165,89 158,84 167,84" fill="#f26522" opacity="0.85"/>
+          <polygon points="32,85 35,94 44,94 37,99 40,108 32,103 24,108 27,99 20,94 29,94" fill="#fff" opacity="0.75"/>
+          <polygon points="170,170 172,177 179,177 174,181 176,188 170,184 164,188 166,181 161,177 168,177" fill="#25c0d5" opacity="0.85"/>
+          <circle cx="30" cy="165" r="4" fill="#ec008c" opacity="0.8"/>
+        </svg>
+      </div>
+
+      <div class="text-area" style="color:#1a2a00;">
+        <div class="eyebrow" style="color:#87ae29;">Our Values</div>
+        <div class="value-name">Integrity &amp;<br>Professionalism</div>
+        <div class="value-statement">"Professionalism, integrity, and ethical practice in all we do."</div>
+      </div>
+
+      <div class="footer-brand" style="color:#87ae29;">Fair Play OOSH</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       05  SAGE  —  Growth & Reflection  (Pink)
+       ══════════════════════════════════════════ -->
+  <div class="poster">
+    <svg class="poster-bg" viewBox="0 0 400 566" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L400,0 L400,402 Q305,450 200,415 Q100,382 28,424 Q10,435 0,430 Z" fill="#ec008c"/>
+      <path d="M0,418 Q78,393 162,413 Q248,433 328,402 Q374,384 400,402 L400,458 Q320,437 240,462 Q157,487 76,464 Q31,450 0,466 Z" fill="#c80077"/>
+      <rect x="0" y="446" width="400" height="120" fill="#fff"/>
+      <!-- Magnifying glass hint -->
+      <circle cx="355" cy="80" r="20" stroke="#fff" stroke-width="3" fill="none" opacity="0.2"/>
+      <line x1="340" y1="95" x2="325" y2="110" stroke="#fff" stroke-width="3" opacity="0.2" stroke-linecap="round"/>
+      <!-- Thought bubbles -->
+      <circle cx="50" cy="100" r="7" fill="#fff" opacity="0.2"/>
+      <circle cx="62" cy="85" r="10" fill="#fff" opacity="0.18"/>
+      <circle cx="77" cy="65" r="14" fill="#fff" opacity="0.15"/>
+      <!-- Sparkles -->
+      <polygon points="335,190 338,199 347,199 340,204 343,213 335,208 327,213 330,204 323,199 332,199" fill="#fff" opacity="0.22"/>
+      <circle cx="42" cy="200" r="5" fill="#fff" opacity="0.22"/>
+    </svg>
+
+    <div class="poster-content">
+      <div class="value-badge" style="color:#ec008c;">05</div>
+
+      <div class="mascot-area">
+        <svg width="200" height="235" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg">
+          <!-- Plant sprout growing from head -->
+          <path d="M100,28 Q100,18 100,10" stroke="#a2cd3a" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="93" cy="14" rx="10" ry="7" fill="#a2cd3a" transform="rotate(-30,93,14)"/>
+          <ellipse cx="107" cy="12" rx="10" ry="7" fill="#a2cd3a" transform="rotate(30,107,12)"/>
+          <ellipse cx="100" cy="8" rx="8" ry="6" fill="#87ae29"/>
+          <!-- Body -->
+          <ellipse cx="100" cy="158" rx="43" ry="47" fill="#ec008c"/>
+          <!-- Magnifying glass held in right hand -->
+          <circle cx="152" cy="155" r="16" stroke="#fff" stroke-width="3.5" fill="none"/>
+          <line x1="162" y1="167" x2="172" y2="177" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <!-- Arms -->
+          <ellipse cx="46" cy="152" rx="20" ry="9" fill="#ec008c" transform="rotate(10,46,152)"/>
+          <ellipse cx="145" cy="143" rx="22" ry="9" fill="#ec008c" transform="rotate(-25,145,143)"/>
+          <circle cx="30" cy="156" r="10" fill="#ec008c"/>
+          <circle cx="158" cy="133" r="10" fill="#ec008c"/>
+          <!-- Head -->
+          <circle cx="100" cy="82" r="52" fill="#ec008c"/>
+          <!-- Cheeks -->
+          <ellipse cx="74" cy="97" rx="10" ry="7" fill="#c80077" opacity="0.5"/>
+          <ellipse cx="126" cy="97" rx="10" ry="7" fill="#c80077" opacity="0.5"/>
+          <!-- Eyes -->
+          <circle cx="84" cy="77" r="17" fill="#fff"/>
+          <circle cx="116" cy="77" r="17" fill="#fff"/>
+          <circle cx="88" cy="79" r="10" fill="#2a001a"/>
+          <circle cx="120" cy="79" r="10" fill="#2a001a"/>
+          <circle cx="92" cy="73" r="4" fill="#fff"/>
+          <circle cx="124" cy="73" r="4" fill="#fff"/>
+          <!-- Curious brows – one slightly raised -->
+          <path d="M74,64 Q84,57 94,63" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M106,61 Q116,56 126,64" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- Smile -->
+          <path d="M82,100 Q100,116 118,100" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- Legs -->
+          <ellipse cx="86" cy="202" rx="13" ry="20" fill="#c80077"/>
+          <ellipse cx="114" cy="202" rx="13" ry="20" fill="#c80077"/>
+          <ellipse cx="84" cy="221" rx="15" ry="8" fill="#ec008c"/>
+          <ellipse cx="116" cy="221" rx="15" ry="8" fill="#ec008c"/>
+          <!-- Thought/reflection bubbles -->
+          <circle cx="168" cy="65" r="4" fill="#fff" opacity="0.7"/>
+          <circle cx="176" cy="54" r="6" fill="#fff" opacity="0.6"/>
+          <circle cx="186" cy="41" r="9" fill="#fff" opacity="0.5"/>
+          <!-- Stars sparkles -->
+          <polygon points="28,80 31,89 40,89 33,94 36,103 28,98 20,103 23,94 16,89 25,89" fill="#f26522" opacity="0.85"/>
+          <polygon points="170,110 172,117 179,117 174,121 176,128 170,124 164,128 166,121 161,117 168,117" fill="#a2cd3a" opacity="0.85"/>
+          <circle cx="32" cy="170" r="5" fill="#25c0d5" opacity="0.8"/>
+        </svg>
+      </div>
+
+      <div class="text-area" style="color:#2a001a;">
+        <div class="eyebrow" style="color:#ec008c;">Our Values</div>
+        <div class="value-name">Growth &amp;<br>Reflection</div>
+        <div class="value-statement">"Continuous reflection, improvement, and professional growth."</div>
+      </div>
+
+      <div class="footer-brand" style="color:#ec008c;">Fair Play OOSH</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       06  JAX  —  Joyful Play  (Multi/Orange)
+       ══════════════════════════════════════════ -->
+  <div class="poster">
+    <svg class="poster-bg" viewBox="0 0 400 566" xmlns="http://www.w3.org/2000/svg">
+      <!-- Multicolor burst background -->
+      <path d="M0,0 L400,0 L400,395 Q290,450 185,408 Q90,370 20,418 Q8,428 0,425 Z" fill="#f26522"/>
+      <!-- Colorful patches on wave -->
+      <path d="M0,0 L120,0 L120,200 Q80,230 0,220 Z" fill="#ec008c" opacity="0.35"/>
+      <path d="M280,0 L400,0 L400,220 Q360,240 280,210 Z" fill="#92278f" opacity="0.3"/>
+      <path d="M120,0 L280,0 L290,180 Q200,200 110,180 Z" fill="#a2cd3a" opacity="0.2"/>
+      <path d="M0,350 Q80,320 165,345 Q252,370 330,340 Q375,322 400,342 L400,460 Q315,438 235,462 Q152,486 70,462 Q28,448 0,464 Z" fill="#d8531a"/>
+      <rect x="0" y="448" width="400" height="118" fill="#fff"/>
+      <!-- Confetti scattered -->
+      <rect x="45" y="50" width="10" height="6" rx="2" fill="#25c0d5" opacity="0.7" transform="rotate(30,45,50)"/>
+      <rect x="330" y="70" width="10" height="6" rx="2" fill="#92278f" opacity="0.7" transform="rotate(-20,330,70)"/>
+      <rect x="60" y="160" width="8" height="5" rx="2" fill="#a2cd3a" opacity="0.7" transform="rotate(45,60,160)"/>
+      <rect x="350" y="150" width="8" height="5" rx="2" fill="#ec008c" opacity="0.7" transform="rotate(-35,350,150)"/>
+      <circle cx="38" cy="120" r="5" fill="#fff" opacity="0.5"/>
+      <circle cx="362" cy="130" r="5" fill="#fff" opacity="0.5"/>
+      <circle cx="355" cy="220" r="4" fill="#a2cd3a" opacity="0.6"/>
+      <circle cx="42" cy="240" r="4" fill="#25c0d5" opacity="0.6"/>
+      <polygon points="340,180 343,189 352,189 345,194 348,203 340,198 332,203 335,194 328,189 337,189" fill="#fff" opacity="0.25"/>
+      <polygon points="58,200 61,209 70,209 63,214 66,223 58,218 50,223 53,214 46,209 55,209" fill="#fff" opacity="0.25"/>
+    </svg>
+
+    <div class="poster-content">
+      <div class="value-badge" style="color:#f26522;">06</div>
+
+      <div class="mascot-area">
+        <!-- JAX is slightly tilted/bouncing – whole mascot rotated a touch -->
+        <svg width="200" height="235" viewBox="0 0 200 235" xmlns="http://www.w3.org/2000/svg">
+          <!-- Confetti/stars bursting around -->
+          <rect x="20" y="45" width="10" height="6" rx="2" fill="#25c0d5" opacity="0.9" transform="rotate(25,20,45)"/>
+          <rect x="165" y="35" width="10" height="6" rx="2" fill="#92278f" opacity="0.9" transform="rotate(-20,165,35)"/>
+          <rect x="15" y="150" width="8" height="5" rx="2" fill="#a2cd3a" opacity="0.9" transform="rotate(45,15,150)"/>
+          <rect x="175" y="140" width="8" height="5" rx="2" fill="#ec008c" opacity="0.9" transform="rotate(-30,175,140)"/>
+          <circle cx="165" cy="170" r="5" fill="#25c0d5" opacity="0.9"/>
+          <circle cx="35" cy="175" r="5" fill="#92278f" opacity="0.9"/>
+          <!-- Stars burst -->
+          <polygon points="180,70 183,79 192,79 185,84 188,93 180,88 172,93 175,84 168,79 177,79" fill="#fff" opacity="0.85"/>
+          <polygon points="20,80 23,89 32,89 25,94 28,103 20,98 12,103 15,94 8,89 17,89" fill="#fff" opacity="0.85"/>
+          <!-- Slightly bouncing – body tilted slightly -->
+          <g transform="rotate(-5, 100, 120)">
+            <!-- Body with multicolor patches -->
+            <ellipse cx="100" cy="158" rx="44" ry="47" fill="#f26522"/>
+            <!-- Multicolor patches -->
+            <ellipse cx="85" cy="148" rx="14" ry="12" fill="#25c0d5" opacity="0.8"/>
+            <ellipse cx="115" cy="165" rx="13" ry="11" fill="#92278f" opacity="0.8"/>
+            <ellipse cx="100" cy="175" rx="12" ry="10" fill="#a2cd3a" opacity="0.75"/>
+            <ellipse cx="88" cy="170" rx="8" ry="7" fill="#ec008c" opacity="0.65"/>
+            <!-- Arms raised in celebration -->
+            <ellipse cx="50" cy="128" rx="20" ry="9" fill="#f26522" transform="rotate(-55,50,128)"/>
+            <ellipse cx="150" cy="128" rx="20" ry="9" fill="#f26522" transform="rotate(55,150,128)"/>
+            <circle cx="36" cy="110" r="11" fill="#f26522"/>
+            <circle cx="164" cy="110" r="11" fill="#f26522"/>
+            <!-- Hands open/celebrating - finger bumps -->
+            <circle cx="30" cy="101" r="6" fill="#f26522"/>
+            <circle cx="38" cy="98" r="6" fill="#f26522"/>
+            <circle cx="158" cy="101" r="6" fill="#f26522"/>
+            <circle cx="166" cy="98" r="6" fill="#f26522"/>
+          </g>
+          <!-- Head (kept roughly upright with slight tilt) -->
+          <g transform="rotate(-4, 100, 80)">
+            <circle cx="100" cy="80" r="52" fill="#f26522"/>
+            <!-- Multicolor patch on head -->
+            <ellipse cx="78" cy="70" rx="14" ry="12" fill="#25c0d5" opacity="0.55"/>
+            <ellipse cx="120" cy="65" rx="12" ry="10" fill="#92278f" opacity="0.45"/>
+            <!-- Cheeks rosy -->
+            <ellipse cx="74" cy="97" rx="11" ry="7" fill="#d8531a" opacity="0.5"/>
+            <ellipse cx="126" cy="97" rx="11" ry="7" fill="#d8531a" opacity="0.5"/>
+            <!-- Eyes – U-shaped happy eyes (squinty happy) -->
+            <circle cx="84" cy="78" r="17" fill="#fff"/>
+            <circle cx="116" cy="78" r="17" fill="#fff"/>
+            <!-- Happy squint pupils – u-shaped arc for eyes -->
+            <path d="M76,74 Q84,86 92,74" stroke="#1a1a00" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M108,74 Q116,86 124,74" stroke="#1a1a00" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- Shine dots -->
+            <circle cx="80" cy="73" r="3.5" fill="#fff" opacity="0.85"/>
+            <circle cx="112" cy="73" r="3.5" fill="#fff" opacity="0.85"/>
+            <!-- Brows raised/excited -->
+            <path d="M74,63 Q84,55 94,61" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M106,61 Q116,55 126,63" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <!-- Biggest smile – wide U -->
+            <path d="M76,100 Q100,125 124,100" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- Tongue tip for extra joy -->
+            <ellipse cx="100" cy="114" rx="8" ry="5" fill="#ec008c" opacity="0.7"/>
+          </g>
+          <!-- Legs bouncing – one up slightly -->
+          <ellipse cx="86" cy="202" rx="14" ry="20" fill="#d8531a" transform="rotate(-8,86,202)"/>
+          <ellipse cx="114" cy="205" rx="14" ry="20" fill="#d8531a" transform="rotate(5,114,205)"/>
+          <ellipse cx="82" cy="220" rx="16" ry="9" fill="#f26522"/>
+          <ellipse cx="116" cy="222" rx="16" ry="9" fill="#f26522"/>
+          <!-- Extra confetti bursting -->
+          <circle cx="155" cy="55" r="5" fill="#ec008c" opacity="0.9"/>
+          <circle cx="45" cy="60" r="4" fill="#a2cd3a" opacity="0.9"/>
+          <rect x="148" y="168" width="7" height="4" rx="1.5" fill="#25c0d5" opacity="0.9" transform="rotate(40,148,168)"/>
+          <rect x="42" y="165" width="7" height="4" rx="1.5" fill="#f26522" opacity="0.9" transform="rotate(-35,42,165)"/>
+        </svg>
+      </div>
+
+      <div class="text-area" style="color:#2a1200;">
+        <div class="eyebrow" style="color:#d8531a;">Our Values</div>
+        <div class="value-name">Joyful Play</div>
+        <div class="value-statement">"Joyful, meaningful, and play-based learning for all children."</div>
+      </div>
+
+      <div class="footer-brand" style="color:#d8531a;">Fair Play OOSH</div>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+</body>
+</html>
